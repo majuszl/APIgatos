@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumindo API</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <img src="" alt="imagem de gato" id="imagem"/>
+    <button id="botao">Busca gato</button>
+
+    <script>
+        $("#botao").on("click", function(){
+            $.ajax({
+                method: "GET", //ele vai me trazer as informações
+                url: "https://api.thecatapi.com/v1/images/search",
+                success: function(retorno) { //se der bom
+                    // console.log(retorno)
+                    let imgGato = retorno[0].url
+                    $("#imagem").attr("src", imgGato)
+                },
+                error: function(erro) { //se der ruim
+                    alert("Não deu bom...")
+                    console.log(erro)
+                }
+            })
+        })
+    </script>
+    
+</body>
+</html>

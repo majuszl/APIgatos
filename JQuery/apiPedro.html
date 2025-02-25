@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <form id+formCadastroUsuario></form>
+
+    <script>
+
+        e.preventDefault();
+
+        let dados = new FormData(this);
+
+        // repassa os dados para objeto
+        let envia = {
+            nome_completo: dados.get("nome completo"),
+            email: dados.get("email"),
+            senha_hash: dados.get("senha_hash"),
+            tipo_usuario: 3
+        }
+
+        // transforma o objeto JSON em uma string
+        envia = JSON.stringfy(envia)
+
+        // envia as informações para a API
+        $.ajax({
+            method: "POST",
+            url: "",
+            data: envia,
+            contentType: "application/json",
+
+            success: function(retorno) {
+                alert("DEU CERTO!")
+                console.log(retorno)
+            },
+            error: function(retorno) {
+                alert("DEU RUIM!")
+                console.log(retorno)
+            }
+        })
+
+    </script>
+    
+</body>
+</html>
